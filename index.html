@@ -6,6 +6,19 @@
     <body>
         <h1>Pomme de Terre</h1>
         
+        <!--- chunk of code from https://www.phpjabbers.com/javascript-countdown-timer-php46.html -->
+        <span id="sessionTimer" class="timer"></span>
+
+        <!-- end borrowed code -->
+        <input type="button" value="start" onclick="timerControl('start')">
+        <input type="button" value="pause" onclick="timerControl('pause')">
+        <input type="button" value="reset" onclick="timerControl('reset')">
+        
+        <div id="session">
+        </div>
+        <div id="break">
+        </div>
+        
         <script src="resources/main.js"></script>
     </body>
 </html>
