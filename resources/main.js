@@ -23,10 +23,10 @@
 var sessionMinutes = 1;
 var breakMinutes = 1;
 
-function countDownTimer(duration){
+//function countDownTimer(){
     //runs the timer
     var onBreak = false;
-    var durationSeconds = (duration * 60);
+    var durationSeconds = (breakMinutes * 60);
     console.log("I'm starting a timer with a duration in seconds of " + durationSeconds);
    
     function tickTock(){
@@ -60,16 +60,16 @@ function countDownTimer(duration){
         }
         
     }
-    var secondInterval = setInterval(tickTock, 1000);
-  }
+    //var secondInterval = setInterval(tickTock, 1000);
+  //}
 
 
-
+var secondInterval;
 
 function timerControl(command){    
     if (command == "start"){
         console.log("start the clock");
-        countDownTimer(sessionMinutes);
+        secondInterval = setInterval(tickTock, 1000);
         //run the time function
     }
     else if (command == "pause"){
@@ -81,7 +81,10 @@ function timerControl(command){
     else if (command == "reset"){
         if (confirm("Are you sure you want to stop this potato early?")){
         console.log("reset the clock"); 
-        //clearInterval(secondInterval);
+        clearInterval(secondInterval); 
+        document.getElementById("session").innerHTML = "SESSION: " + sessionMinutes;
+        document.getElementById("break").innerHTML = "BREAK: " + breakMinutes;
+            
         //set the timer to starting postion but don't start it
         } else {
             //do nothing
