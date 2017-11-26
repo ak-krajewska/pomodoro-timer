@@ -33,7 +33,6 @@ var breakMinutes = 1;
         //if the duration is 1 second or more than a second sutract 1 from the display
         //if the duration is 0, stop the function????
         
-        
         if (durationSeconds >= 1){
             durationSeconds = durationSeconds - 1;
             var remainingMinutes = Math.round((durationSeconds - 30)/60); 
@@ -66,20 +65,23 @@ var breakMinutes = 1;
 
 var secondInterval;
 
-function timerControl(command){    
-    if (command == "start"){
-        console.log("start the clock");
-        secondInterval = setInterval(tickTock, 1000);
-        //run the time function
-    }
-    else if (command == "pause"){
-        console.log("pause the clock");
+//rewrite each timercontrol into a seperate funciton
+
+function startTimer(){
+    console.log("start the clock");
+    secondInterval = setInterval(tickTock, 1000);
+}
+
+function pauseTimer(){
+    console.log("pause the clock");
         //pause will also need to be an unpause so will have to have a visual indicator of its state
         //save the timers state
         //unpause the timer using the saved state to initialize it
-    } 
-    else if (command == "reset"){
-        if (confirm("Are you sure you want to stop this potato early?")){
+        //you know what pause is not one of the user stories so maybe I don't need to build it
+}
+
+function resetTimer(){
+    if (confirm("Are you sure you want to stop this potato early?")){
         console.log("reset the clock"); 
         clearInterval(secondInterval); 
         document.getElementById("session").innerHTML = "SESSION: " + sessionMinutes;
@@ -89,11 +91,11 @@ function timerControl(command){
         } else {
             //do nothing
         }
-           
-    }
 }
+
 
 
 function setTime(time){
     //customizes the length of the timer
+    //change the variable to something other than time because time is often the name of a built in library or funcion
 }
