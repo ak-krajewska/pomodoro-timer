@@ -130,10 +130,9 @@ function startTimer(){
 
 function pauseTimer(){
     console.log("pause the clock");
-        //pause will also need to be an unpause so will have to have a visual indicator of its state
-        //save the timers state
-        //unpause the timer using the saved state to initialize it
-        //you know what pause is not one of the user stories so maybe I don't need to build it
+    clearInterval(secondInterval);
+    document.getElementById("start").disabled = false;
+    document.getElementById("pause").disabled = true;
 }
 
 function resetTimer(){
