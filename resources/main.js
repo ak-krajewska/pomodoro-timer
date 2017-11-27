@@ -5,6 +5,7 @@ var onBreak = false;
 var durationSeconds = (sessionMinutes * 60);
 var secondInterval;
 var isTickTocking = false;
+document.getElementById("pause").disabled = true;
 
 //show the timer with the selected break and session time
 function showTimer(){
@@ -52,6 +53,30 @@ function decrementBreak(){
     }
 }
 
+
+//deactivate increment, decrement, and start buttons when timer active
+//activate pause button when timer active
+
+function buttonActivate(){
+    if (isTickTocking == true){
+    //deactivate buttons
+        document.getElementById("incrementSession").disabled = true;
+        document.getElementById("decrementSession").disabled = true;
+        document.getElementById("incrementBreak").disabled = true;
+        document.getElementById("decrementBreak").disabled = true;
+        document.getElementById("start").disabled = true;
+        document.getElementById("pause").disabled = false;
+    } else {
+    //reactivate buttons   
+        document.getElementById("incrementSession").disabled = false;
+        document.getElementById("decrementSession").disabled = false;
+        document.getElementById("incrementBreak").disabled = false;
+        document.getElementById("decrementBreak").disabled = false;
+        document.getElementById("start").disabled = false;
+        document.getElementById("pause").disabled = true;
+    }
+}
+
 //runs the timer
 function tickTock(){
       
@@ -89,6 +114,7 @@ function tickTock(){
             document.getElementById("break").innerHTML = "Break complete";
             clearInterval(secondInterval); 
             isTickTocking = false;
+            buttonActivate();
             console.log("tic toc status: " + isTickTocking);
         }
     }
@@ -98,6 +124,7 @@ function startTimer(){
     console.log("start the clock");
     isTickTocking = true;
     secondInterval = setInterval(tickTock, 1000);
+    buttonActivate();
     console.log("tic toc status: " + isTickTocking);
 }
 
@@ -114,6 +141,7 @@ function resetTimer(){
         console.log("reset the clock"); 
         clearInterval(secondInterval); 
         isTickTocking = false;
+        buttonActivate();
         showTimer();
         console.log("tic toc status: " + isTickTocking);
         } 
