@@ -24,12 +24,14 @@ function incrementSession(){
     //button to increment session by 1 minute
 }
 
+//button to decrement session by 1 minute
 function decrementSession(){
-    //button to decrement session by 1 minute
-    sessionMinutes = sessionMinutes - 1;
-    console.log("sessionMinutes is now: " + sessionMinutes);
-    durationSeconds = sessionMinutes * 60;
-    showTimer();
+    if (sessionMinutes > 1){
+        sessionMinutes = sessionMinutes - 1;
+        console.log("sessionMinutes is now: " + sessionMinutes);
+        durationSeconds = sessionMinutes * 60;
+        showTimer();
+    }
 }
 
 function incrementBreak(){
@@ -40,10 +42,13 @@ function incrementBreak(){
     showTimer();
 }
 
+//button to decrement break by 1 minute
 function decrementBreak(){
-    //button to decrement break by 1 minute
-    breakMinutes = breakMinutes - 1;
-    console.log("breakMinutes is now: " + breakMinutes);
+    if (breakMinutes > 1) {
+        breakMinutes = breakMinutes - 1;
+        console.log("breakMinutes is now: " + breakMinutes);
+        showTimer();
+    }
 }
 
 //runs the timer
