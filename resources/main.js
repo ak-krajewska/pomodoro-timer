@@ -4,6 +4,7 @@ var breakMinutes = 1;
 var onBreak = false;
 var durationSeconds = (sessionMinutes * 60);
 var secondInterval;
+var isTickTocking = false;
 
 //show the timer with the selected break and session time
 function showTimer(){
@@ -12,8 +13,8 @@ function showTimer(){
 }
 
 
-//this might want to be several timers
-//write safeteys in so you can't decrement lower thatn 1, otherwise you get negative time
+//Timer control buttons
+
 //write safeteys so you can't mess with a session in progress
 
 function incrementSession(){
@@ -53,18 +54,28 @@ function decrementBreak(){
 
 //runs the timer
 function tickTock(){
-        //if the duration is 1 second or more than a second sutract 1 from the display
-        //if the duration is 0, stop the function????
       
     if (durationSeconds >= 1){
         durationSeconds = durationSeconds - 1;
         var remainingMinutes = Math.round((durationSeconds - 30)/60); 
         var remainingSeconds = durationSeconds % 60;
+        
+        
+        
         if (onBreak == false) {
-            document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":" + remainingSeconds;
-            document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+            if (remainingSeconds < 10){
+                document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":0" + remainingSeconds;
+                document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+            } else {
+                document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":" + remainingSeconds;
+                document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+            }
         } else if (onBreak == true){
-            document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":" + remainingSeconds;
+            if (remainingSeconds < 10){
+                document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":0" + remainingSeconds;
+            } else {
+                document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":" + remainingSeconds;
+            }
         }
             
     } else {
@@ -76,13 +87,18 @@ function tickTock(){
             //call the break functions
         } else if ((onBreak == true) && (durationSeconds == 0)){
             document.getElementById("break").innerHTML = "Break complete";
+            clearInterval(secondInterval); 
+            isTickTocking = false;
+            console.log("tic toc status: " + isTickTocking);
         }
     }
 }
    
 function startTimer(){
     console.log("start the clock");
+    isTickTocking = true;
     secondInterval = setInterval(tickTock, 1000);
+    console.log("tic toc status: " + isTickTocking);
 }
 
 function pauseTimer(){
@@ -97,6 +113,10 @@ function resetTimer(){
     if (confirm("Are you sure you want to stop this potato early?")){
         console.log("reset the clock"); 
         clearInterval(secondInterval); 
+        isTickTocking = false;
         showTimer();
+        console.log("tic toc status: " + isTickTocking);
         } 
 }
+
+console.log("tic toc status: " + isTickTocking);
