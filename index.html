@@ -3,7 +3,7 @@
         <title>Pomme de Terre</title>
         
     </head>
-    <body>
+    <body onload="showTimer();">
         <h1>Pomme de Terre</h1>
         
         <!--- chunk of code from https://www.phpjabbers.com/javascript-countdown-timer-php46.html -->
@@ -13,6 +13,10 @@
         <input type="button" value="start" onclick="startTimer()">
         <input type="button" value="pause" onclick="pauseTimer()">
         <input type="button" value="reset" onclick="resetTimer()">
+        <input type="button" value="increment session" onclick="incrementSession()">
+        <input type="button" value="decrement session" onclick="decrementSession()">
+        <input type="button" value="increment break" onclick="incrementBreak()">
+        <input type="button" value="decrement break" onclick="decrementBreak()">
         
         <div id="session">
         </div>
