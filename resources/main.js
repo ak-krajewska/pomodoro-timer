@@ -1,3 +1,5 @@
+//tofix: bug: after the full session timer and break timer run out, when you hit "start" again the timer starts and then turns off after one tick.
+
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 1;
 var breakMinutes = 1;
@@ -114,8 +116,10 @@ function tickTock(){
             document.getElementById("break").innerHTML = "Break complete";
             clearInterval(secondInterval); 
             isTickTocking = false;
+            //durationSeconds = sessionMinutes * 60; creates unexpected bad effects and doesn't fix the bug
             buttonActivate();
             console.log("tic toc status: " + isTickTocking);
+            
         }
     }
 }
