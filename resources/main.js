@@ -1,5 +1,3 @@
-//tofix: bug: after the full session timer and break timer run out, when you hit "start" again the timer starts and then turns off after one tick.
-
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 1;
 var breakMinutes = 1;
@@ -15,31 +13,30 @@ function showTimer(){
     document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
 }
 
-
 //Timer control buttons
 
-//write safeteys so you can't mess with a session in progress
-
+//button to increment session by 1 minute
 function incrementSession(){
     sessionMinutes = sessionMinutes + 1;
     console.log("sessionMinutes is now: " + sessionMinutes);
     durationSeconds = sessionMinutes * 60;
-    showTimer();
-    //button to increment session by 1 minute
+    console.log("function incrementSession set durationSeconds to " + durationSeconds);
+    showTimer(); 
 }
 
-//button to decrement session by 1 minute
+//buttons to decrement session by 1 minute
 function decrementSession(){
     if (sessionMinutes > 1){
         sessionMinutes = sessionMinutes - 1;
         console.log("sessionMinutes is now: " + sessionMinutes);
         durationSeconds = sessionMinutes * 60;
+        console.log("function decrementSession set durationSeconds to " + durationSeconds);
         showTimer();
     }
 }
 
-function incrementBreak(){
     //button to increment berak by 1 minute
+function incrementBreak(){
     breakMinutes = breakMinutes + 1;
     console.log("breakMinutes is now: " + breakMinutes);
     //durationSeconds = sessionMinutes * 60;
@@ -116,9 +113,13 @@ function tickTock(){
             document.getElementById("break").innerHTML = "Break complete";
             clearInterval(secondInterval); 
             isTickTocking = false;
-            //durationSeconds = sessionMinutes * 60; creates unexpected bad effects and doesn't fix the bug
             buttonActivate();
             console.log("tic toc status: " + isTickTocking);
+            //reset durationSeconds and break? wait a minute,you have to toggle of fon Break
+            onBreak = false;
+            console.log("onBreak is " + onBreak);
+            durationSeconds = sessionMinutes * 60; 
+            console.log("durationSeconds is " + durationSeconds);
             
         }
     }
