@@ -11,6 +11,8 @@ document.getElementById("pause").disabled = true;
 function showTimer(){
     document.getElementById("session").innerHTML = "SESSION: " + sessionMinutes + ":00";
     document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+    document.getElementById("breakLength").innerHTML = "BREAK: " + breakMinutes + ":00";
+    document.getElementById("sessionLength").innerHTML = "SESSION: " + sessionMinutes + ":00";
 }
 
 //Timer control buttons
