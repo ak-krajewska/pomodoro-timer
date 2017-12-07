@@ -1,3 +1,6 @@
+//TODO: create a circle or similar that fills up as a funciton of the percantage of the session
+//TODO: change the color of the circle depending on if it's break or session
+
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 1;
 var breakMinutes = 1;
@@ -9,28 +12,19 @@ document.getElementById("pause").disabled = true;
 
 //show the timer with the selected break and session time
 function showTimer(){
-    //document.getElementById("session").innerHTML = "SESSION: " + sessionMinutes + ":00";
-    //document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
-   // document.getElementById("breakLength").innerHTML = "BREAK: " + breakMinutes + ":00";
-    
     document.getElementById("breakLength").innerHTML = "Break: " + breakMinutes + ":00";
     document.getElementById("sessionLength").innerHTML = "Session" + sessionMinutes + ":00";
     
     if (onBreak == true){
         document.getElementById("bigClock").innerHTML = breakMinutes + ":00";
         document.getElementById("timerType").innerHTML = "BREAK";
-        
     } else {
-        
         document.getElementById("bigClock").innerHTML = sessionMinutes + ":00";
         document.getElementById("timerType").innerHTML = "SESSION";
     }
 }
 
-
-
 //Timer control buttons
-
 //button to increment session by 1 minute
 function incrementSession(){
     sessionMinutes = sessionMinutes + 1;
@@ -71,7 +65,6 @@ function decrementBreak(){
 
 //deactivate increment, decrement, and start buttons when timer active
 //activate pause button when timer active
-
 function buttonActivate(){
     if (isTickTocking == true){
     //deactivate buttons
@@ -93,58 +86,45 @@ function buttonActivate(){
 }
 
 //runs the timer
-function tickTock(){
-      
+function tickTock(){  
     if (durationSeconds >= 1){
         durationSeconds = durationSeconds - 1;
         var remainingMinutes = Math.round((durationSeconds - 30)/60); 
-        var remainingSeconds = durationSeconds % 60;
-        
-        
+        var remainingSeconds = durationSeconds % 60;     
         
         if (onBreak == false) {
             if (remainingSeconds < 10){
-                //document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":0" + remainingSeconds;
-                //document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
                 document.getElementById("bigClock").innerHTML = remainingMinutes + ":0" + remainingSeconds;
                 
             } else {
-                //document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":" + remainingSeconds;
-                //document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
                 document.getElementById("bigClock").innerHTML = remainingMinutes + ":" + remainingSeconds;
             }
         } else if (onBreak == true){
             if (remainingSeconds < 10){
-                //document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":0" + remainingSeconds;
                 document.getElementById("bigClock").innerHTML = remainingMinutes + ":0" + remainingSeconds;
                 
             } else {
-                //document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":" + remainingSeconds;
                 document.getElementById("bigClock").innerHTML = remainingMinutes + ":" + remainingSeconds;
             }
         }
             
     } else {
         if (onBreak == false){
-            //document.getElementById("session").innerHTML = "Session complete";
             onBreak = true;
             durationSeconds = breakMinutes * 60;
             showTimer();
             tickTock();
             //call the break functions
         } else if ((onBreak == true) && (durationSeconds == 0)){
-            //document.getElementById("break").innerHTML = "Break complete";
             clearInterval(secondInterval); 
             isTickTocking = false;
             buttonActivate();
             console.log("tic toc status: " + isTickTocking);
-            //reset durationSeconds and break? wait a minute,you have to toggle of fon Break
             onBreak = false;
             console.log("onBreak is " + onBreak);
             durationSeconds = sessionMinutes * 60; 
             console.log("durationSeconds is " + durationSeconds);
             showTimer();
-            
         }
     }
 }
