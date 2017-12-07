@@ -9,11 +9,25 @@ document.getElementById("pause").disabled = true;
 
 //show the timer with the selected break and session time
 function showTimer(){
-    document.getElementById("session").innerHTML = "SESSION: " + sessionMinutes + ":00";
-    document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
-    document.getElementById("breakLength").innerHTML = "BREAK: " + breakMinutes + ":00";
-    document.getElementById("sessionLength").innerHTML = "SESSION: " + sessionMinutes + ":00";
+    //document.getElementById("session").innerHTML = "SESSION: " + sessionMinutes + ":00";
+    //document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+   // document.getElementById("breakLength").innerHTML = "BREAK: " + breakMinutes + ":00";
+    
+    document.getElementById("breakLength").innerHTML = "Break: " + breakMinutes + ":00";
+    document.getElementById("sessionLength").innerHTML = "Session" + sessionMinutes + ":00";
+    
+    if (onBreak == true){
+        document.getElementById("bigClock").innerHTML = breakMinutes + ":00";
+        document.getElementById("timerType").innerHTML = "BREAK";
+        
+    } else {
+        
+        document.getElementById("bigClock").innerHTML = sessionMinutes + ":00";
+        document.getElementById("timerType").innerHTML = "SESSION";
+    }
 }
+
+
 
 //Timer control buttons
 
@@ -90,29 +104,36 @@ function tickTock(){
         
         if (onBreak == false) {
             if (remainingSeconds < 10){
-                document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":0" + remainingSeconds;
-                document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+                //document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":0" + remainingSeconds;
+                //document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+                document.getElementById("bigClock").innerHTML = remainingMinutes + ":0" + remainingSeconds;
+                
             } else {
-                document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":" + remainingSeconds;
-                document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+                //document.getElementById("session").innerHTML = "SESSION: " + remainingMinutes + ":" + remainingSeconds;
+                //document.getElementById("break").innerHTML = "BREAK: " + breakMinutes + ":00";
+                document.getElementById("bigClock").innerHTML = remainingMinutes + ":" + remainingSeconds;
             }
         } else if (onBreak == true){
             if (remainingSeconds < 10){
-                document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":0" + remainingSeconds;
+                //document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":0" + remainingSeconds;
+                document.getElementById("bigClock").innerHTML = remainingMinutes + ":0" + remainingSeconds;
+                
             } else {
-                document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":" + remainingSeconds;
+                //document.getElementById("break").innerHTML = "BREAK: " + remainingMinutes + ":" + remainingSeconds;
+                document.getElementById("bigClock").innerHTML = remainingMinutes + ":" + remainingSeconds;
             }
         }
             
     } else {
         if (onBreak == false){
-            document.getElementById("session").innerHTML = "Session complete";
+            //document.getElementById("session").innerHTML = "Session complete";
             onBreak = true;
             durationSeconds = breakMinutes * 60;
+            showTimer();
             tickTock();
             //call the break functions
         } else if ((onBreak == true) && (durationSeconds == 0)){
-            document.getElementById("break").innerHTML = "Break complete";
+            //document.getElementById("break").innerHTML = "Break complete";
             clearInterval(secondInterval); 
             isTickTocking = false;
             buttonActivate();
@@ -122,6 +143,7 @@ function tickTock(){
             console.log("onBreak is " + onBreak);
             durationSeconds = sessionMinutes * 60; 
             console.log("durationSeconds is " + durationSeconds);
+            showTimer();
             
         }
     }
