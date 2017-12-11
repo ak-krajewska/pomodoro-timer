@@ -1,51 +1,53 @@
 <html>
     <head>
-        <title>Pomme de Terre</title>
         
+        <title>Pomme de Terre</title>
+        <link rel="stylesheet" href="resources/style.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Reenie+Beanie" rel="stylesheet">
+        <!-- decorative glyphicons -->
+      <script src="https://use.fontawesome.com/3d9e66e7b2.js"></script>
+        <audio id="chime" src="https://notificationsounds.com/soundfiles/821fa74b50ba3f7cba1e6c53e8fa6845/file-sounds-924-long-chime-sound.mp3"></audio>
     </head>
     <body onload="showTimer();">
-        
-        
-        <div class="container">
+         <div class="container">
             <h1>Pomme de Terre</h1>
-            
+            <div>
+                <span class="control-row-label">BREAK LENGTH</span>
+                <span class="control-row-label">SESSION LENGTH</span>
+            </div>
             <div class="controller">
-                <span>
-                    <input type="button" id="decrementBreak"  value="-" onclick="decrementBreak()"> 
-                    BREAK LENGTH
-                     <input type="button" id="incrementBreak" value="+" onclick="incrementBreak()">
+                <span class="control-row">
+                 <button class="control-buttons" type="submit" id="decrementBreak" onclick="decrementBreak()"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                 <span id="breakLength">Break</span>
+                 <button class="control-buttons" type="submit" id="incrementBreak" onclick="incrementBreak()"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </span>
-                <span>
-                    <input type="button" id="decrementSession" value="-" onclick="decrementSession()">
-                    SESSION LENGTH
-                    <input type="button" id="incrementSession" value="+" onclick="incrementSession()">
+                <span class="control-row"> 
+                    <button class="control-buttons" type="submit" id="decrementSession" onclick="decrementSession()"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    <span id="sessionLength">Session</span>
+                    <button class="control-buttons" type="submit" id="incrementSession" onclick="incrementSession()"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </span>
             </div>
-            <div>
-                <span id="breakLength">Break</span>
-                <span id="sessionLength">Session</span>
+            <div id="bigPotato">
+                <div id="innerPotato">
+                    <div id = "timerType">SESSION</div>
+                    <div id = "bigClock">0:00</div>
+                </div> 
             </div>
-        
-            
-            
-            <div>
-                <div id = "timerType">SESSION</div>
-                <div id = "bigClock">0:00</div>
-            </div>
-            
-            
-           <div>
-                <input type="button" id="start" value="START" onclick="startTimer()">
-                <input type="button" id="pause" value="PAUSE" onclick="pauseTimer()">
-                <input type="button" id="reset" value="RESET" onclick="resetTimer()">
+               <div class="play-buttons">
+                   <button type="submit" id="start" onclick="startTimer()"><i class="fa fa-play" aria-hidden="true"></i> START</button>
 
-            </div>
+                   <button type="submit" id="pause" onclick="pauseTimer()"><i class="fa fa-pause" aria-hidden="true"></i> PAUSE</button>
+
+                   <button type="submit" id="reset" onclick="resetTimer()"><i class="fa fa-undo" aria-hidden="true"></i> RESET</button>
+
+                </div>
+            
             
 
-            <div id="session">
+            <!--<div id="session">
             </div>
             <div id="break">
-            </div>
+            </div> -->
             
         
         </div>

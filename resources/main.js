@@ -1,9 +1,10 @@
 //TODO: create a circle or similar that fills up as a funciton of the percantage of the session
 //TODO: change the color of the circle depending on if it's break or session
+//Todo: use the loaded audio file to make a chime noise at the end
 
 //this is the default duration, but it can be over written with interation
-var sessionMinutes = 1;
-var breakMinutes = 1;
+var sessionMinutes = 25;
+var breakMinutes = 5;
 var onBreak = false;
 var durationSeconds = (sessionMinutes * 60);
 var secondInterval;
@@ -12,8 +13,8 @@ document.getElementById("pause").disabled = true;
 
 //show the timer with the selected break and session time
 function showTimer(){
-    document.getElementById("breakLength").innerHTML = "Break: " + breakMinutes + ":00";
-    document.getElementById("sessionLength").innerHTML = "Session" + sessionMinutes + ":00";
+    document.getElementById("breakLength").innerHTML = breakMinutes + ":00";
+    document.getElementById("sessionLength").innerHTML = sessionMinutes + ":00";
     
     if (onBreak == true){
         document.getElementById("bigClock").innerHTML = breakMinutes + ":00";
