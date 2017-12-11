@@ -10,6 +10,7 @@ var durationSeconds = (sessionMinutes * 60);
 var secondInterval;
 var isTickTocking = false;
 document.getElementById("pause").disabled = true;
+var audio = new Audio('http://soundbible.com/mp3/Electronic_Chime-KevanGC-495939803.mp3');
 
 //show the timer with the selected break and session time
 function showTimer(){
@@ -24,6 +25,12 @@ function showTimer(){
         document.getElementById("timerType").innerHTML = "SESSION";
     }
 }
+
+//fill proportion calculator
+//find out what proportion of the time has elapsed
+
+
+
 
 //Timer control buttons
 //button to increment session by 1 minute
@@ -114,6 +121,7 @@ function tickTock(){
             onBreak = true;
             durationSeconds = breakMinutes * 60;
             showTimer();
+            audio.play();
             tickTock();
             //call the break functions
         } else if ((onBreak == true) && (durationSeconds == 0)){
@@ -125,6 +133,7 @@ function tickTock(){
             console.log("onBreak is " + onBreak);
             durationSeconds = sessionMinutes * 60; 
             console.log("durationSeconds is " + durationSeconds);
+            audio.play();
             showTimer();
         }
     }

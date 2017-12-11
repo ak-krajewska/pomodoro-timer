@@ -77,9 +77,8 @@ button.disabled {
     width: 250px;
     height: 250px;
     margin: 30px auto 10px;
-    background-color: darkgoldenrod;
-    background-image: url(images/medium-potato.jpg);
-    background-position: center;
+    //background-image: url(images/medium-potato.jpg);
+    //background-position: center;
     border: 10px solid darkgoldenrod;
     padding: 20px;
     border-radius: 50%;
@@ -88,10 +87,11 @@ button.disabled {
 #innerPotato{
     width: 200px;
     margin: 80px auto;
-     font-family: 'Reenie Beanie', cursive;
+    font-family: 'Reenie Beanie', cursive;
     font-size: 50px;
     text-align: center;
 }
 
 
-https://notificationsounds.com/soundfiles/821fa74b50ba3f7cba1e6c53e8fa6845/file-sounds-924-long-chime-sound.mp3
+
+
