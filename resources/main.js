@@ -11,6 +11,10 @@ var secondInterval;
 var isTickTocking = false;
 document.getElementById("pause").disabled = true;
 var audio = new Audio('http://soundbible.com/mp3/Electronic_Chime-KevanGC-495939803.mp3');
+var audio = new Audio('resources/long-chime-sound.mp3');
+
+//document.getElementById("bigPotato").setAttribute('background-color: rgba(255, 255, 255, 0)')
+//this doesn't work
 
 //show the timer with the selected break and session time
 function showTimer(){
@@ -145,6 +149,7 @@ function startTimer(){
     secondInterval = setInterval(tickTock, 1000);
     buttonActivate();
     console.log("tic toc status: " + isTickTocking);
+    audio.play();
 }
 
 function pauseTimer(){

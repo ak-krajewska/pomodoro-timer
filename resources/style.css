@@ -1,7 +1,7 @@
-//div {
-//    border: 1px solid magenta;
+/*div {
+    border: 1px solid magenta;
     //for debug only
-//}
+}*/
 
 body {
    font-family: 'Montserrat', sans-serif;
@@ -18,11 +18,15 @@ h1 {
     padding-top: 10px;
 }
 
+a {
+    color: black;
+}
+
 .container {
     width: 400px;
     margin: 10px auto;
-    background: white;
     border-radius: 10%;
+    background-color: rgba(255, 255, 255, .5);
 
 }
 
@@ -73,15 +77,34 @@ button.disabled {
     padding-bottom: 20px;
 }
 
+.potato-background{
+    width: 270px;
+    height: 270px;
+    margin: 30px auto 10px;
+    background-image: url(images/medium-potato.jpg);
+    background-position: center;
+    //border: 10px solid darkgoldenrod;
+    //background-color: white;
+    //padding: 20px;
+    border-radius: 50%;
+    //background-color: rgba(255, 255, 255, 0);
+  
+}
+
 #bigPotato{
     width: 250px;
     height: 250px;
-    margin: 30px auto 10px;
-    //background-image: url(images/medium-potato.jpg);
-    //background-position: center;
     border: 10px solid darkgoldenrod;
-    padding: 20px;
     border-radius: 50%;
+    background-color: rgba(255, 255, 255, .5);
+    
+}
+
+//this is supposed to make the inner potato look hazy
+.fill-layer{
+    background-color: rgba(255, 255, 255, .5);
+    //z-index: 1000;
+
 }
 
 #innerPotato{
@@ -92,6 +115,10 @@ button.disabled {
     text-align: center;
 }
 
+.footer {
+    width: 400px;
+    margin: 10px auto;
+}
 
 
 

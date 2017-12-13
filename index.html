@@ -6,7 +6,6 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Reenie+Beanie" rel="stylesheet">
         <!-- decorative glyphicons -->
       <script src="https://use.fontawesome.com/3d9e66e7b2.js"></script>
-        <audio id="chime" src="https://notificationsounds.com/soundfiles/821fa74b50ba3f7cba1e6c53e8fa6845/file-sounds-924-long-chime-sound.mp3"></audio>
     </head>
     <body onload="showTimer();">
          <div class="container">
@@ -27,11 +26,15 @@
                     <button class="control-buttons" type="submit" id="incrementSession" onclick="incrementSession()"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </span>
             </div>
-            <div id="bigPotato">
-                <div id="innerPotato">
-                    <div id = "timerType">SESSION</div>
-                    <div id = "bigClock">0:00</div>
-                </div> 
+            <div class="potato-background">
+                <div id="bigPotato">
+                    <div class="fill-layer">
+                        <div id="innerPotato">
+                            <div id = "timerType">SESSION</div>
+                            <div id = "bigClock">0:00</div>
+                        </div> 
+                    </div>
+                </div>
             </div>
                <div class="play-buttons">
                    <button type="submit" id="start" onclick="startTimer()"><i class="fa fa-play" aria-hidden="true"></i> START</button>
@@ -50,6 +53,9 @@
             </div> -->
             
         
+        </div>
+        <div class="footer">
+            <p>*The gentle motivational timer inspired by <a href="https://emilysdiary.deviantart.com/art/Little-Tato-448409421?q=gallery%3AEmilysDiary&qo=2">the tiny potato who believes you can do the thing</a>.</p>
         </div>
         
         
