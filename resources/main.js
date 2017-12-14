@@ -1,5 +1,3 @@
-//TODO: change the fader color depending if you're on break or in
-
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 25;
 var breakMinutes = 5;
@@ -10,11 +8,6 @@ var isTickTocking = false;
 document.getElementById("pause").disabled = true;
 var audio = new Audio('http://soundbible.com/mp3/Electronic_Chime-KevanGC-495939803.mp3');
 var audio = new Audio('resources/long-chime-sound.mp3');
-
-
-//this is the proper format to alter the background color
-//document.getElementById("bigPotato").style = "background-color: rgba(255, 255, 255, 0)";
-
 
 //show the timer with the selected break and session time
 function showTimer(){
@@ -32,19 +25,12 @@ function showTimer(){
 
 //fade in color calculator
 //find out what proportion of the time has elapsed
-function potatoFader(total, portion){
-    //find out what portion of the total time is done
-    //var howFaded = (Math.round((portion/total)*100))/100;
+function potatoFader(total, portion, color){
     var howFaded = portion/total;
     console.log("how faded is " + howFaded);
     console.log("portion is " + portion + " and total is " + total);
-    //round to between 1 and .01 (so 1 out of 10 would be .1 etc)
-    //set the opacity element to that number
-    document.getElementById("bigPotato").style = "background-color: rgba(255, 255, 255, " + howFaded + ")";
+    document.getElementById("bigPotato").style = "background-color: rgba(" + color + howFaded + ")";
 }
-
-
-
 
 //Timer control buttons
 //button to increment session by 1 minute
@@ -113,10 +99,10 @@ function tickTock(){
         durationSeconds = durationSeconds - 1;
         var remainingMinutes = Math.round((durationSeconds - 30)/60); 
         var remainingSeconds = durationSeconds % 60;  
-        
+       
         
         if (onBreak == false) {
-            potatoFader(sessionMinutes*60, (remainingMinutes*60 + remainingSeconds));
+            potatoFader(sessionMinutes*60, (remainingMinutes*60 + remainingSeconds), "255, 255, 255,");
             if (remainingSeconds < 10){
                 document.getElementById("bigClock").innerHTML = remainingMinutes + ":0" + remainingSeconds;
                 
@@ -124,7 +110,7 @@ function tickTock(){
                 document.getElementById("bigClock").innerHTML = remainingMinutes + ":" + remainingSeconds;
             }
         } else if (onBreak == true){
-            potatoFader(breakMinutes*60, (remainingMinutes*60 + remainingSeconds));
+            potatoFader(breakMinutes*60, (remainingMinutes*60 + remainingSeconds), "26, 180, 91,");
             if (remainingSeconds < 10){
                 document.getElementById("bigClock").innerHTML = remainingMinutes + ":0" + remainingSeconds;
                 
