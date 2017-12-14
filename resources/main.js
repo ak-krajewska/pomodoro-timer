@@ -6,7 +6,6 @@ var durationSeconds = (sessionMinutes * 60);
 var secondInterval;
 var isTickTocking = false;
 document.getElementById("pause").disabled = true;
-var audio = new Audio('http://soundbible.com/mp3/Electronic_Chime-KevanGC-495939803.mp3');
 var audio = new Audio('resources/long-chime-sound.mp3');
 
 //show the timer with the selected break and session time
@@ -24,11 +23,10 @@ function showTimer(){
 }
 
 //fade in color calculator
-//find out what proportion of the time has elapsed
 function potatoFader(total, portion, color){
     var howFaded = portion/total;
-    console.log("how faded is " + howFaded);
-    console.log("portion is " + portion + " and total is " + total);
+    //console.log("how faded is " + howFaded);
+    //console.log("portion is " + portion + " and total is " + total);
     document.getElementById("bigPotato").style = "background-color: rgba(" + color + howFaded + ")";
 }
 
@@ -53,7 +51,7 @@ function decrementSession(){
     }
 }
 
-    //button to increment berak by 1 minute
+//button to increment berak by 1 minute
 function incrementBreak(){
     breakMinutes = breakMinutes + 1;
     console.log("breakMinutes is now: " + breakMinutes);
@@ -69,7 +67,6 @@ function decrementBreak(){
         showTimer();
     }
 }
-
 
 //deactivate increment, decrement, and start buttons when timer active
 //activate pause button when timer active
@@ -131,11 +128,11 @@ function tickTock(){
             clearInterval(secondInterval); 
             isTickTocking = false;
             buttonActivate();
-            console.log("tic toc status: " + isTickTocking);
+            //console.log("tic toc status: " + isTickTocking);
             onBreak = false;
-            console.log("onBreak is " + onBreak);
+            //console.log("onBreak is " + onBreak);
             durationSeconds = sessionMinutes * 60; 
-            console.log("durationSeconds is " + durationSeconds);
+            //console.log("durationSeconds is " + durationSeconds);
             audio.play();
             showTimer();
         }
@@ -143,16 +140,16 @@ function tickTock(){
 }
    
 function startTimer(){
-    console.log("start the clock");
+    //console.log("start the clock");
     isTickTocking = true;
     secondInterval = setInterval(tickTock, 1000);
     buttonActivate();
-    console.log("tic toc status: " + isTickTocking);
+    //console.log("tic toc status: " + isTickTocking);
     audio.play();
 }
 
 function pauseTimer(){
-    console.log("pause the clock");
+    //console.log("pause the clock");
     clearInterval(secondInterval);
     document.getElementById("start").disabled = false;
     document.getElementById("pause").disabled = true;
@@ -160,13 +157,13 @@ function pauseTimer(){
 
 function resetTimer(){
     if (confirm("Are you sure you want to stop this potato early?")){
-        console.log("reset the clock"); 
+        //console.log("reset the clock"); 
         clearInterval(secondInterval); 
         isTickTocking = false;
         buttonActivate();
         showTimer();
-        console.log("tic toc status: " + isTickTocking);
+        //console.log("tic toc status: " + isTickTocking);
         } 
 }
 
-console.log("tic toc status: " + isTickTocking);
+//console.log("tic toc status: " + isTickTocking);
