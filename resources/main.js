@@ -164,6 +164,8 @@ function resetTimer(){
         onBreak = false; //if we're in a break change our status to a session
         buttonActivate();
         showTimer();
+        //potatoFader(sessionMinutes*60, (remainingMinutes*60 + remainingSeconds), "255, 255, 255,"); 
+        document.getElementById("bigPotato").style = "background-color: rgba(255, 255, 255, 1)";
         //console.log("tic toc status: " + isTickTocking);
         } 
 }
