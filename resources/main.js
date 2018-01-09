@@ -1,3 +1,4 @@
+//bug - when you hit "reset" while a break is running it resets the break instead of taking you to the start of a session
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 25;
 var breakMinutes = 5;
