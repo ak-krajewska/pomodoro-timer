@@ -1,4 +1,4 @@
-//bug - when you hit "reset" while a break is running it resets the break instead of taking you to the start of a session
+//bug - when you hit "reset" while a break is running the background color of the timer circle remains bright green
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 25;
 var breakMinutes = 5;
@@ -161,6 +161,7 @@ function resetTimer(){
         //console.log("reset the clock"); 
         clearInterval(secondInterval); 
         isTickTocking = false;
+        onBreak = false; //if we're in a break change our status to a session
         buttonActivate();
         showTimer();
         //console.log("tic toc status: " + isTickTocking);
