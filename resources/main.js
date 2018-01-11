@@ -1,4 +1,4 @@
-//bug - when you hit "reset" while a break is running the background color of the timer circle remains bright green
+//bug - when you hit reset from the break, you get a session whose time is the length of the break
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 25;
 var breakMinutes = 5;
