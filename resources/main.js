@@ -1,4 +1,3 @@
-//bug - when you hit reset from the break, you get a session whose time is the length of the break
 //this is the default duration, but it can be over written with interation
 var sessionMinutes = 25;
 var breakMinutes = 5;
@@ -167,6 +166,8 @@ function resetTimer(){
         //potatoFader(sessionMinutes*60, (remainingMinutes*60 + remainingSeconds), "255, 255, 255,"); 
         document.getElementById("bigPotato").style = "background-color: rgba(255, 255, 255, 1)";
         //console.log("tic toc status: " + isTickTocking);
+        //reset the length of the session, so it's not the length of the break
+        durationSeconds = sessionMinutes * 60; 
         } 
 }
 
